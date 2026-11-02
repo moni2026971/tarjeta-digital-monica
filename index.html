@@ -14,7 +14,7 @@
             font-family: 'Montserrat', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-color: #f0f4f8; /* Un gris azulado muy claro para el fondo */
+            background-color: #D9D3C1; /* Un gris azulado muy claro para el fondo */
         }
         /* Contenedor principal de la tarjeta */
         .card-container {
@@ -40,14 +40,38 @@
 
         /* Imagen de fondo principal */
         .main-bg {
-            background-image: url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-            background-size: cover;
-            background-position: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #F5EBDD 0%, #E9E2D5 55%, #E8DDEB 100%);
             height: 200px;
+        }
+        /* Formas suaves que enmarcan la foto sin competir con ella */
+        .main-bg::before {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            left: 50%;
+            top: 28px;
+            transform: translateX(-50%);
+            border: 2px solid rgba(122, 143, 123, .45);
+            border-radius: 50%;
+            box-shadow: 0 0 0 18px rgba(255,255,255,.28), 0 0 0 38px rgba(201,124,93,.12);
+        }
+        .main-bg::after {
+            content: "";
+            position: absolute;
+            width: 145px;
+            height: 145px;
+            right: -28px;
+            top: -48px;
+            border: 1px solid rgba(122, 76, 138, .28);
+            border-radius: 50%;
+            box-shadow: -24px 24px 0 -1px rgba(122, 76, 138, .06);
         }
         /* Sección de contenido principal */
         .content-section {
-            background: linear-gradient(180deg, #005f73 0%, #0a9396 100%);
+            background: linear-gradient(180deg, #F8F3EA 0%, #F5EFE6 100%);
             margin-top: -60px;
             border-top-left-radius: 50px;
             border-top-right-radius: 50px;
@@ -66,7 +90,7 @@
         .profile-pic {
             width: 100%;
             height: 100%;
-            border: 5px solid #0a9396;
+            border: 5px solid #FFFFFF;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         /* Ícono de verificación */
@@ -156,14 +180,14 @@
         }
         .modal-header {
             padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid #f0f4f8;
+            border-bottom: 1px solid #D9D3C1;
             position: relative;
         }
         .modal-header-title {
             font-size: 1.5rem;
             font-weight: 600;
             text-align: center;
-            color: #005f73;
+            color: #7A8F7B;
             max-width: calc(100% - 90px); /* Evita la superposición con el botón de cerrar */
             margin: 0 auto; /* Centra el título con el nuevo max-width */
         }
@@ -186,8 +210,8 @@
             position: absolute;
             top: 0.75rem;
             right: 0.75rem;
-            background: #f0f4f8;
-            color: #005f73;
+            background: #D9D3C1;
+            color: #7A8F7B;
             border-radius: 99px;
             width: 36px;
             height: 36px;
@@ -222,22 +246,81 @@
             font-weight: bold;
         }
         .calendar-day.selected {
-            background-color: #005f73;
+            background-color: #7A8F7B;
             color: white;
             transform: scale(1.1);
             box-shadow: 0 0 10px rgba(0,95,115,0.5);
         }
-        .time-slot { transition: all 0.2s ease-in-out; border: 2px solid #f0f4f8; }
+        .time-slot { transition: all 0.2s ease-in-out; border: 2px solid #D9D3C1; }
         .time-slot:hover {
             border-color: #e9d8a6;
-            background-color: #f0f4f8;
+            background-color: #D9D3C1;
         }
         .time-slot.selected {
-            background-color: #005f73;
+            background-color: #7A8F7B;
             color: white;
-            border-color: #005f73;
+            border-color: #7A8F7B;
             font-weight: 600;
         }
+    
+        /* Ajuste visual: luminoso, cálido y con contraste accesible */
+        body { background-color: #F7F4EE; }
+        .card-container { background-color: #FFFEFC; }
+        .main-bg {
+            background-image: radial-gradient(ellipse at 18% 42%, rgba(91,119,94,.48) 0%, rgba(122,143,123,0) 42%), radial-gradient(ellipse at 88% 82%, rgba(190,102,72,.38) 0%, rgba(201,124,93,0) 34%), linear-gradient(125deg, #EBD7B8 0%, #DCE6D9 56%, #E7D7E5 100%);
+            background-repeat: no-repeat;
+            height: 175px;
+            position: relative;
+            overflow: hidden;
+        }
+        .content-section {
+            background: #FFFEFC;
+            margin-top: -48px;
+            border-top-left-radius: 42px;
+            border-top-right-radius: 42px;
+            padding-bottom: 2rem;
+        }
+        .main-bg::before, .main-bg::after { display: none !important; }
+        .profile-container { margin-top: -92px; position: relative; z-index: 1; }
+        /* Oculta el distintivo azul de plantilla, ajeno a la identidad visual */
+        .profile-container > div:last-child { display: none !important; }
+        .profile-pic {
+            border: 5px solid #FFFEFC;
+            box-shadow: 0 5px 18px rgba(63, 78, 65, .16);
+        }
+        .action-btn {
+            background-color: #6F4A7E !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 3px 10px rgba(111, 74, 126, .18);
+        }
+        .action-btn:hover { box-shadow: 0 5px 14px rgba(111, 74, 126, .24); }
+        .social-btn {
+            background-color: #EEF3ED;
+            color: #405B48;
+            border: 1px solid #D6E1D5;
+        }
+        .social-btn:hover { background-color: #E2EBE1; }
+        .footer-banner { background-color: #F2EDE3; color: #51443A; }
+        .modal-content { border-color: #E5D9EA; }
+        .modal-header-title { color: #6F4A7E; }
+        .modal-header-title::after { background-color: #7A8F7B; }
+        .modal-close-btn { background-color: #EEF3ED; color: #405B48; }
+        .modal-close-btn:hover { background-color: #E2EBE1; }
+        .time-slot { border-color: #D6E1D5; }
+        .time-slot:hover { border-color: #B8CBB8; background-color: #EEF3ED; }
+        .time-slot.selected { background-color: #6F4A7E; border-color: #6F4A7E; }
+        /* Corrección de contraste: conservar calidez sin perder legibilidad */
+        .content-section { background: linear-gradient(180deg, #F8F1E6 0%, #F1E7D8 100%) !important; color: #3F352F !important; }
+        .content-section h1, .content-section h2, .content-section h3,
+        .content-section p, .content-section span, .content-section div,
+        .content-section a, .content-section li { color: #3F352F; }
+        .content-section .action-btn { background: #75517E !important; color: #FFFFFF !important; }
+        .content-section .social-btn { background: #E5EBDD !important; color: #354B3C !important; border-color: #C9D4C5 !important; }
+        .content-section .social-btn i { color: #5D765F !important; }
+        .content-section .action-btn i { color: #FFFFFF !important; }
+        .content-section a.action-btn, .content-section a.action-btn span, .content-section a.action-btn i { color: #FFFFFF !important; }
+        .footer-banner { background: #E8DCCB !important; color: #493A30 !important; }
+        .footer-banner * { color: #493A30 !important; }
     </style>
 </head>
 <body class="bg-gray-200">
@@ -314,7 +397,7 @@
         
         <!-- BANNER INFERIOR --><div class="footer-banner text-center py-4 px-4 font-semibold">
             <p>Mónica Mosquera | Psicóloga y consultora en transición de vida y carrera</p>
-            <a href="mailto:psicmonica.mosquera@gmail.com" class="block text-sm text-[#005f73] hover:underline mt-2 font-normal">psicmonica.mosquera@gmail.com</a>
+            <a href="mailto:psicmonica.mosquera@gmail.com" class="block text-sm text-[#7A8F7B] hover:underline mt-2 font-normal">psicmonica.mosquera@gmail.com</a>
         </div>
     </div>
 
@@ -351,11 +434,11 @@
             <div class="modal-body">
                 <div class="space-y-4 text-gray-700">
                     <div class="flex flex-col items-center text-center gap-2 border-b border-gray-200 pb-3">
-                        <span class="font-semibold text-[#005f73] flex items-center justify-center gap-3"><i class="far fa-calendar-alt w-5 text-center"></i>Lunes a Viernes</span>
+                        <span class="font-semibold text-[#7A8F7B] flex items-center justify-center gap-3"><i class="far fa-calendar-alt w-5 text-center"></i>Lunes a Viernes</span>
                         <span class="font-mono bg-gray-100 px-3 py-1 rounded">09:00 - 12:00 y 14:00 - 18:00</span>
                     </div>
                     <div class="flex flex-col items-center text-center gap-2 border-b border-gray-200 pb-3">
-                        <span class="font-semibold text-[#005f73] flex items-center justify-center gap-3"><i class="far fa-calendar w-5 text-center"></i>Sábados</span>
+                        <span class="font-semibold text-[#7A8F7B] flex items-center justify-center gap-3"><i class="far fa-calendar w-5 text-center"></i>Sábados</span>
                         <span class="font-mono bg-gray-100 px-3 py-1 rounded">08:00 - 12:00</span>
                     </div>
                     <div class="flex justify-between items-center">
@@ -379,7 +462,7 @@
                  <p class="text-center text-gray-600 mb-6">Accede a mi contacto rápidamente guardando esta tarjeta en la pantalla de inicio. ¡Es muy fácil!</p>
                 <div class="flex flex-col sm:flex-row gap-6">
                     <div class="flex-1 p-4 bg-gray-50 rounded-lg border">
-                        <h3 class="text-lg font-semibold text-[#005f73] mb-3 flex items-center gap-2"><i class="fab fa-apple"></i> Para iOS (iPhone)</h3>
+                        <h3 class="text-lg font-semibold text-[#7A8F7B] mb-3 flex items-center gap-2"><i class="fab fa-apple"></i> Para iOS (iPhone)</h3>
                         <ol class="list-decimal list-inside text-gray-600 space-y-2 text-sm">
                             <li>Toca el ícono de <strong>Compartir</strong> <i class="fas fa-share-square"></i> en Safari.</li>
                             <li>Selecciona <strong>"Agregar a la pantalla de inicio"</strong>.</li>
@@ -387,7 +470,7 @@
                         </ol>
                     </div>
                     <div class="flex-1 p-4 bg-gray-50 rounded-lg border">
-                        <h3 class="text-lg font-semibold text-[#005f73] mb-3 flex items-center gap-2"><i class="fab fa-android"></i> Para Android</h3>
+                        <h3 class="text-lg font-semibold text-[#7A8F7B] mb-3 flex items-center gap-2"><i class="fab fa-android"></i> Para Android</h3>
                         <ol class="list-decimal list-inside text-gray-600 space-y-2 text-sm">
                             <li>Toca los <strong>tres puntos</strong> <i class="fas fa-ellipsis-v"></i> en Chrome.</li>
                             <li>Selecciona <strong>"Agregar a la pantalla principal"</strong>.</li>
@@ -507,9 +590,9 @@
                 <div class="modal-body">
                     <div id="calendar-view">
                         <div class="flex items-center justify-between mb-4">
-                            <button id="prev-month-btn" class="text-gray-600 hover:text-[#005f73] text-2xl p-2 rounded-full leading-none">&larr;</button>
+                            <button id="prev-month-btn" class="text-gray-600 hover:text-[#7A8F7B] text-2xl p-2 rounded-full leading-none">&larr;</button>
                             <h3 id="month-year" class="text-lg font-semibold text-gray-700"></h3>
-                            <button id="next-month-btn" class="text-gray-600 hover:text-[#005f73] text-2xl p-2 rounded-full leading-none">&rarr;</button>
+                            <button id="next-month-btn" class="text-gray-600 hover:text-[#7A8F7B] text-2xl p-2 rounded-full leading-none">&rarr;</button>
                         </div>
                         <div class="grid grid-cols-7 gap-2 text-center text-sm text-gray-400 font-bold mb-2">
                             <div>Do</div><div>Lu</div><div>Ma</div><div>Mi</div><div>Ju</div><div>Vi</div><div>Sá</div>
@@ -517,7 +600,7 @@
                         <div id="calendar-days" class="grid grid-cols-7 gap-2 text-center"></div>
                     </div>
                     <div id="time-view" class="hidden">
-                        <button id="back-to-calendar-btn" class="text-sm text-[#005f73] hover:underline mb-4 font-semibold">&larr; Volver al calendario</button>
+                        <button id="back-to-calendar-btn" class="text-sm text-[#7A8F7B] hover:underline mb-4 font-semibold">&larr; Volver al calendario</button>
                         <p id="selected-date-text" class="text-center text-gray-600 mb-4 font-semibold"></p>
                         <div id="time-slots" class="grid grid-cols-3 sm:grid-cols-4 gap-3"></div>
                         <button id="confirm-appointment-btn" class="w-full mt-6 py-3 bg-[#ee9b00] text-white font-bold rounded-lg hover:bg-amber-500 transition disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>Confirmar Cita</button>
@@ -646,11 +729,11 @@
             modalContent.innerHTML = `
                 <div class="modal-body text-center p-8">
                     <div class="text-7xl text-green-500 mb-4"><i class="fas fa-check-circle"></i></div>
-                    <h2 class="text-2xl font-bold text-[#005f73] mb-2">¡Cita Confirmada!</h2>
+                    <h2 class="text-2xl font-bold text-[#7A8F7B] mb-2">¡Cita Confirmada!</h2>
                     <p class="text-gray-600">Tu cita está agendada para el</p>
                     <p class="font-semibold text-gray-800 text-lg my-2 bg-gray-100 p-2 rounded-lg">${selectedDate.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })} a las ${selectedTime}</p>
                     <p class="text-sm text-gray-500 mt-4">Recibirás una confirmación por correo electrónico. ¡Nos vemos pronto!</p>
-                    <button id="final-close-btn" class="mt-6 w-full py-3 bg-[#005f73] text-white font-bold rounded-lg hover:bg-[#0a9396] transition">Cerrar</button>
+                    <button id="final-close-btn" class="mt-6 w-full py-3 bg-[#7A8F7B] text-white font-bold rounded-lg hover:bg-[#8B5E3C] transition">Cerrar</button>
                 </div>
             `;
             document.getElementById('final-close-btn').addEventListener('click', closeAgendarModal);
